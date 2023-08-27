@@ -1,8 +1,18 @@
 // Function to update charts when dropdown selection is made
-function selectionMade(selectedSample) {
-  // Load the CSV data using D3
+function selectionMade(selectedSample, selectedDataset) {
   let thisSample = selectedSample.slice(0, -2);
-  d3.csv("Global_Ocean_Temp_Anom.csv").then((data) => {
+  let csvFilePath;
+
+  if (selectedDataset === "ocean") {
+    csvFilePath = "Global_Ocean_Temp_Anom.csv";
+  } else if (selectedDataset === "land") {
+    csvFilePath = "Global_Land_Temp_Anom.csv";
+  } else if (selectedDataset === "land_ocean") {
+    csvFilePath = "Global_Land_OceanTemp_Anom.csv";
+  }
+
+  // Load the CSV data using D3
+  d3.csv(csvFilePath).then((data) => {
 
     // Filter and transform the data
     let sampleData = data.filter(row => row.Year.startsWith(thisSample));
@@ -11,7 +21,6 @@ function selectionMade(selectedSample) {
     let anomalies = sampleData.map(row => parseFloat(row.Anomaly));
     let years = sampleData.map(row => parseInt(row.Year));
     let months = sampleData.map(row => parseInt(row.Year.slice(-2)) - 1);
-
 
 
     // Bar chart data
@@ -36,7 +45,6 @@ function selectionMade(selectedSample) {
 
 
 
-
     // Define your 'size' array with appropriate values
     let sizeArray = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 
@@ -54,8 +62,8 @@ function selectionMade(selectedSample) {
 
     // Bubble chart data
     let selectedBubble = [{
-      x: years, // Use all years for x-axis
-      y: anomalies.reverse(), // Reverse the anomalies array to match the new order
+      x: years.slice(0, 12), // Use all years for x-axis
+      y: anomalies.slice(0, 12).reverse(), // Reverse the anomalies array to match the new order
       mode: 'markers',
       marker: {
         size: sizeArray,
@@ -80,16 +88,14 @@ function selectionMade(selectedSample) {
 
     // Create the bubble plot
     Plotly.newPlot("bubble", selectedBubble, selectedBubbleLayout);
-
     
   });
 }
 
 
-
-// Function to populate the dropdown menu
+// Function to populate the dropdown menu and dataset selector
 function populateDropdownMenu() {
-  // Load the CSV data using D3
+  // Load the CSV data using D3 for the year selection dropdown
   d3.csv("Global_Ocean_Temp_Anom.csv").then((data) => {
     let dropdown = d3.select("#selDataset");
     let years = data.map(row => parseInt(row.Year));
@@ -101,19 +107,32 @@ function populateDropdownMenu() {
       .text(d => d)
       .property("value", d => d);
   });
+
+  // Load the CSV data using D3 for the dataset selection dropdown
+  let datasetDropdown = d3.select("#datasetSelector");
+  let datasetOptions = ["ocean", "land", "land_ocean"]; // Add more options as needed
+
+  datasetDropdown.selectAll("option")
+    .data(datasetOptions)
+    .enter()
+    .append("option")
+    .text(d => d)
+    .property("value", d => d);
 }
 
-// Call the function to populate the dropdown menu
+// Call the function to populate the dropdown menus
 populateDropdownMenu();
 
-// Initialize the charts with the first sample data
-d3.csv("Global_Ocean_Temp_Anom.csv").then((data) => {
-  let initialSample = data.map(row => row.Year)[0];
-  selectionMade(initialSample);
+// Event listener for dataset selector change
+d3.select("#datasetSelector").on("change", function (e) {
+  let selectedDataset = e.target.value;
+  let selectedSample = d3.select("#selDataset").property("value");
+  selectionMade(selectedSample, selectedDataset);
 });
 
 // Event listener for dropdown menu change
 d3.select("#selDataset").on("change", function (e) {
   let selectedSample = e.target.value;
-  selectionMade(selectedSample);
+  let selectedDataset = d3.select("#datasetSelector").property("value");
+  selectionMade(selectedSample, selectedDataset);
 });
