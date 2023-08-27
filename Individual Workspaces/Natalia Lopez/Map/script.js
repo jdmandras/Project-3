@@ -18,7 +18,7 @@ data.forEach(function(item) {
         markerColor = 'red';
     }
 
-    var marker = L.marker([item.latitude, item.longitude], {
+    var marker = L.marker([item.Latitude, item.Longitude], {
         icon: L.icon({
             iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-' + markerColor + '.png',
             shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -29,7 +29,16 @@ data.forEach(function(item) {
         })
     }).bindPopup(
         "City: " + item.City +
+        "Country: " + item.Country +
         "<br>AQI: " + item['AQI Value'] +
-        "<br>AQI Category: " + item['AQI Category']
+        "<br>AQI Category: " + item['AQI Category'] +
+        "<br>CO AQI Value: " + item['CO AQI Value'] +
+        "<br>AQI CO AQI Category: " + item['CO AQI Category'] +
+        "<br>OZone AQI Value: " + item['Ozone AQI Value'] +
+        "<br>Ozone AQI Category: " + item['Ozone AQI Category'] +
+        "<br>NO2 AQI Value: " + item['NO2 AQI Value'] +
+        "<br>NO2 AQI Category: " + item['NO2 AQI Category'] +
+        "<br>PM2.5 AQI Category: " + item['PM2.5 AQI Value'] +
+        "<br>PM2.5 AQI Category: " + item['PM2.5 AQI Category']
     ).addTo(map);
 });
