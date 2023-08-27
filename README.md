@@ -1,4 +1,4 @@
-# Project-3
+# Project-3: Algorithm Alchemists
 
 ## **Climate Insights: Unveiling Ocean-Sea Dynamics, Pandemic Pollution, and Urban Air Trends**
 
