@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Algorithm Alchemists</title>
+
+  <!-- Load Plotly.js -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  
+  <!-- Load D3.js -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Link to your custom CSS file -->
+  <link rel="stylesheet" type="text/css" href="Algorithm-Alchemists-CSS.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Team Algorithm Alchemists</h1>
+
+    <div class="dropdown">
+      <label for="datasetSelector">Select Dataset:</label>
+      <select id="datasetSelector"></select>
+    </div>
+
+    <div class="dropdown">
+      <label for="selDataset">Select Year:</label>
+      <select id="selDataset"></select>
+    </div>
+
+    <div id="charts">
+      <div id="bar"></div>
+      <div id="bubble"></div>
+      <canvas id="chartjs-donut" width="400" height="400"></canvas>
+      <!-- Add other chart divs here -->
+    </div>
+
+    <div id="sample-metadata" class="metadata">
+      <!-- Demographic info will be displayed here -->
+    </div>
+  </div>
+
+  <script src="Algorithm-Alchemists-Java.js"></script>
+</body>
+
+</html>
