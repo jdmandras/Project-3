@@ -1,3 +1,41 @@
+// Declare the chart instances object
+let chartInstances = {};
+
+// Function to create or update a Chart.js donut chart
+function createOrUpdateDonutChart(chartCanvas, data, labels) {
+  if (chartInstances[chartCanvas]) {
+    chartInstances[chartCanvas].destroy();
+  }
+
+  let ctx = document.getElementById(chartCanvas).getContext('2d');
+  chartInstances[chartCanvas] = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: labels,
+      datasets: [{
+        data: data,
+        backgroundColor: [
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          // Add more colors as needed
+        ],
+        borderColor: [
+          'rgba(75, 192, 192, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(255, 206, 86, 1)',
+          // Add more colors as needed
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true
+    }
+  });
+}
+
+
 // Function to update charts when dropdown selection is made
 function selectionMade(selectedSample, selectedDataset) {
   let thisSample = selectedSample.slice(0, -2);
@@ -21,6 +59,8 @@ function selectionMade(selectedSample, selectedDataset) {
     let anomalies = sampleData.map(row => parseFloat(row.Anomaly));
     let years = sampleData.map(row => parseInt(row.Year));
     let months = sampleData.map(row => parseInt(row.Year.slice(-2)) - 1);
+    // Extract month names or numbers
+    let monthLabels = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 
     // Bar chart data
@@ -88,7 +128,19 @@ function selectionMade(selectedSample, selectedDataset) {
 
     // Create the bubble plot
     Plotly.newPlot("bubble", selectedBubble, selectedBubbleLayout);
+
+
+
+    // Create or update Chart.js donut chart
+    createOrUpdateDonutChart("chartjs-donut", anomalies.slice(0, 12).reverse(), monthLabels);
     
+
+
+
+
+
+
+
   });
 }
 
