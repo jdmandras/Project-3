@@ -29,7 +29,7 @@ data.forEach(function(item) {
         })
     }).bindPopup(
         "City: " + item.City +
-        "Country: " + item.Country +
+        "<br>Country: " + item.Country +
         "<br>AQI: " + item['AQI Value'] +
         "<br>AQI Category: " + item['AQI Category'] +
         "<br>CO AQI Value: " + item['CO AQI Value'] +

@@ -1,0 +1,46 @@
+<!-- Load Plotly.js -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  
+<!-- Load D3.js -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<!-- Link to your custom CSS file -->
+<link rel="stylesheet" type="text/css" href="styles.css">
+
+<!-- Link to Interactive Map -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+
+<body>
+<div class="container">
+  <h1>Team Algorithm Alchemists</h1>
+
+  <div class="dropdown">
+    <label for="selDataset">Select Year:</label>
+    <select id="selDataset"></select>
+  </div>
+
+  <div id="charts">
+    <div id="bar"></div>
+    <div id="bubble"></div>
+    <!-- Add other chart divs here -->
+  </div>
+
+  <div id="sample-metadata" class="metadata">
+    <!-- Demographic info will be displayed here -->
+  </div>
+</div>
+
+<script src="Project_3_MGill.js"></script>
+
+<div class="container">
+  <h1>Map</h1>
+  <div id="map"></div>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="Glob_AP_Nat.js"></script>
+  <script src="script.js"></script>
+</div>
+
+</body>
+
+</html>
