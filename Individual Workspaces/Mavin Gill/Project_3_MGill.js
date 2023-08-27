@@ -2,30 +2,19 @@
 let chartInstances = {};
 
 // Function to create or update a Chart.js donut chart
-function createOrUpdateDonutChart(chartCanvas, data, labels) {
+function createOrUpdateDonutChart(chartCanvas, data, labels, colors) {
   if (chartInstances[chartCanvas]) {
     chartInstances[chartCanvas].destroy();
   }
 
   let ctx = document.getElementById(chartCanvas).getContext('2d');
   chartInstances[chartCanvas] = new Chart(ctx, {
-    type: 'doughnut',
+    type: 'doughnut', // Use 'doughnut' type for a donut chart
     data: {
       labels: labels,
       datasets: [{
         data: data,
-        backgroundColor: [
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          // Add more colors as needed
-        ],
-        borderColor: [
-          'rgba(75, 192, 192, 1)',
-          'rgba(255, 99, 132, 1)',
-          'rgba(255, 206, 86, 1)',
-          // Add more colors as needed
-        ],
+        backgroundColor: colors, // Use the specified array of colors
         borderWidth: 1
       }]
     },
@@ -59,9 +48,27 @@ function selectionMade(selectedSample, selectedDataset) {
     let anomalies = sampleData.map(row => parseFloat(row.Anomaly));
     let years = sampleData.map(row => parseInt(row.Year));
     let months = sampleData.map(row => parseInt(row.Year.slice(-2)) - 1);
+    
     // Extract month names or numbers
     let monthLabels = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
+    // Call the function to create or update the donut chart
+    let donutData = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]; // Example data
+    let donutLabels = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; 
+    let donutColors = [
+      'rgb(255, 99, 132)',
+      'rgb(255, 159, 64)',
+      'rgb(255, 205, 86)',
+      'rgb(75, 192, 192)',
+      'rgb(54, 162, 235)',
+      'rgb(153, 102, 255)',
+      'rgb(201, 203, 207)',
+      'rgb(255, 99, 132)',
+      'rgb(255, 159, 64)',
+      'rgb(255, 205, 86)',
+      'rgb(75, 192, 192)',
+      'rgb(54, 162, 235)'
+    ]; // Array of colors
 
     // Bar chart data
     let selectedBar = [{
@@ -134,12 +141,6 @@ function selectionMade(selectedSample, selectedDataset) {
     // Create or update Chart.js donut chart
     createOrUpdateDonutChart("chartjs-donut", anomalies.slice(0, 12).reverse(), monthLabels);
     
-
-
-
-
-
-
 
   });
 }
