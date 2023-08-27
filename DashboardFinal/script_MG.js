@@ -89,9 +89,6 @@ function selectionMade(selectedSample, selectedDataset) {
     // Create the bar chart
     Plotly.newPlot("bar", selectedBar, selectedBarLayout);
 
-
-
-
     // Define your 'size' array with appropriate values
     let sizeArray = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 
@@ -136,15 +133,11 @@ function selectionMade(selectedSample, selectedDataset) {
     // Create the bubble plot
     Plotly.newPlot("bubble", selectedBubble, selectedBubbleLayout);
 
-
-
     // Create or update Chart.js donut chart
     createOrUpdateDonutChart("chartjs-donut", anomalies.slice(0, 12).reverse(), monthLabels);
     
-
   });
 }
-
 
 // Function to populate the dropdown menu and dataset selector
 function populateDropdownMenu() {

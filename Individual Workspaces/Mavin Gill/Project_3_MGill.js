@@ -47,11 +47,10 @@ function selectionMade(selectedSample, selectedDataset) {
     // Extract relevant columns
     let anomalies = sampleData.map(row => parseFloat(row.Anomaly));
     let years = sampleData.map(row => parseInt(row.Year));
-    let months = sampleData.map(row => parseInt(row.Year.slice(-2)) - 1);
-    
+    let months = sampleData.map(row => parseInt(row.Year.slice(4)));
     // Extract month names or numbers
     let monthLabels = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
+    
     // Call the function to create or update the donut chart
     let donutData = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]; // Example data
     let donutLabels = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; 
@@ -90,10 +89,8 @@ function selectionMade(selectedSample, selectedDataset) {
     Plotly.newPlot("bar", selectedBar, selectedBarLayout);
 
 
-
-
-    // Define your 'size' array with appropriate values
-    let sizeArray = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+    // Define 'size' array with smaller values
+    let sizeArray = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]; 
 
     // Function to format tick labels
     function customTickFormat(year) {
@@ -118,7 +115,8 @@ function selectionMade(selectedSample, selectedDataset) {
       },
       text: anomalies,
     }];
-
+  
+    
     // Bubble chart layout
     let selectedBubbleLayout = {
       title: "Monthly Anomalies",
