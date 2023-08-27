@@ -18,7 +18,7 @@ data.forEach(function(item) {
         markerColor = 'red';
     }
 
-    var marker = L.marker([item.Latitude, item.Longitude], {
+    var marker = L.marker([item.latitude, item.longitude], {
         icon: L.icon({
             iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-' + markerColor + '.png',
             shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
