@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+
+  h2 {
+    text-align: center;
+  }
+  
+  .dropdown {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .metadata {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+  }
+  
+  #charts {
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #map {
+    height: 350px;
+    width: 700px;
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+}
+ 
+  /* Add more styles as needed for your specific visualizations */
