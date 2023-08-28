@@ -1,4 +1,4 @@
-    // Fetch CSV data and create the Plotly line graph for historical sea level w major events
+// Fetch CSV data and create the Plotly line graph for historical sea level w major events
 async function fetchCSVAndCreateGraph() {
     const response = await fetch('sea-level-rise-historical.csv'); // Replace with the actual path to your CSV file
     const text = await response.text();
@@ -23,6 +23,21 @@ async function fetchCSVAndCreateGraph() {
     }];
 
     const layout = {
+        images: [
+            {
+                source: 'hx-ocean.jpg',
+                x: 0,
+                y: 1,
+                xref: 'paper', 
+                yref: 'paper',
+                xanchor: 'left',
+                yanchor: 'top',
+                sizex: 1,
+                sizey: 1,
+                opacity: 0.5,
+                layer: 'below'
+            }
+        ],
         title:  {
             text: 'Global Historical Rise in Sea Level',
             font: {
@@ -44,9 +59,11 @@ async function fetchCSVAndCreateGraph() {
             title: 'Sea Level Rise (cm)',
             font: {
                 size: 25
-            }
+            },
+            // range: [0, 2000] /// Set y-axis limit
         },
-        height: 900, // Adjust plot height
+        height: 600, // Adjust plot height
+        width: 1400,
         annotations: [
             {
                 x: 1883,

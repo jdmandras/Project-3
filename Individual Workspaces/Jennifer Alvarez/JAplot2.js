@@ -253,14 +253,54 @@ for (const cityData of cityDataArray) {
 }
 
 // Layout configuration
+// Layout configuration
 const layout = {
-  title: 'Cummulative Rise in Sea Level over Time',
+  images: [
+    {
+        source: 'pred-ocean.jpg',
+        x: 0,
+        y: 1,
+        xref: 'paper', 
+        yref: 'paper',
+        xanchor: 'left',
+        yanchor: 'top',
+        sizex: 1,
+        sizey: 1,
+        opacity: 0.5,
+        layer: 'below'
+    }
+],
+  title: {
+    text: 'Cumulative Predicted Rise in Sea Level over Time',
+    font: {
+      size: 30 // Adjust plot title font size
+    }
+  },
   xaxis: {
-    title: 'Year',
+    title: {
+      text: 'Year',
+      font: {
+        size: 25 // Adjust x-axis label font size
+      }
+    },
+    tickfont: {
+      size: 16 // Adjust x-tick label font size
+    }
   },
   yaxis: {
-    title: 'RSL in cm',
+    title: {
+      text: 'RSL in cm',
+      font: {
+        size: 20 // Adjust y-axis label font size
+      }
+    },
+    tickfont: {
+      size: 16 // Adjust y-tick label font size
+    },
+    range: [0, 1900], // Set y-axis limit
   },
+  height: 600, // Adjust chart height
+  width: 1400,
 };
 
 // Create the plot
