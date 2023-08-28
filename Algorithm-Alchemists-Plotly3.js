@@ -1,6 +1,6 @@
 // Fetch CSV data and create the Plotly line graph for historical sea level w major events
 async function fetchCSVAndCreateGraph() {
-    const response = await fetch('sea-level-rise-historical.csv'); // Replace with the actual path to your CSV file
+    const response = await fetch('Resources/sea-level-rise-historical.csv'); // Replace with the actual path to your CSV file
     const text = await response.text();
 
     const rows = text.trim().split('\n');
@@ -117,7 +117,7 @@ async function fetchCSVAndCreateGraph() {
                 text: "Great Depression begins",
                 showarrow: true,
                 arrowhead: 2,
-                ax: -50,
+                ax: 0,
                 ay: -40,
                 font: {
                     size:16, //Adjust callout font size
