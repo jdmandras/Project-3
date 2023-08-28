@@ -1,4 +1,4 @@
-    // Fetch CSV data and create the Plotly line graph
+    // Fetch CSV data and create the Plotly line graph for historical sea level w major events
 async function fetchCSVAndCreateGraph() {
     const response = await fetch('sea-level-rise-historical.csv'); // Replace with the actual path to your CSV file
     const text = await response.text();
@@ -23,13 +23,30 @@ async function fetchCSVAndCreateGraph() {
     }];
 
     const layout = {
-        title: 'Global Historical Rise in Sea Level',
+        title:  {
+            text: 'Global Historical Rise in Sea Level',
+            font: {
+                size: 30
+                }
+            },
         xaxis: {
-            title: 'Year'
+            title: {
+            text: 'Year',
+            font: {
+                size: 25 // Adjust x-axis label font size
+                }
+            },
+            tickfont: {
+                size: 16
+            }
         },
         yaxis: {
-            title: 'Sea Level Rise (cm)'
+            title: 'Sea Level Rise (cm)',
+            font: {
+                size: 25
+            }
         },
+        height: 900, // Adjust plot height
         annotations: [
             {
                 x: 1883,
@@ -39,20 +56,12 @@ async function fetchCSVAndCreateGraph() {
                 text: "Krakatoa Volcano Eruption",
                 showarrow: true,
                 arrowhead: 2,
-                ax: 50,
-                ay: -40
+                ax: 0,
+                ay: 40,
+                font: {
+                    size:16 //Adjust callout font size
+                }
             },
-            // {
-            //     x: 1903,
-            //     y: 0.5, // Adjust the y-coordinate of the callout as needed
-            //     xref: 'x',
-            //     y: seaLevelData[years.indexOf('1903')], 
-            //     text: "Ford Motor Company Formed",
-            //     showarrow: true,
-            //     arrowhead: 2,
-            //     ax: 0,
-            //     ay: -40
-            // },
             {
                 x: 1914,
                 y: 0.5, // Adjust the y-coordinate of the callout as needed
@@ -61,8 +70,12 @@ async function fetchCSVAndCreateGraph() {
                 text: "World War I begins",
                 showarrow: true,
                 arrowhead: 2,
-                ax: 0,
-                ay: -40
+                ax: -50,
+                ay: -40,
+                font: {
+                    size:16, 
+                    width: 100
+                }
             },
             {
                 x: 1918,
@@ -73,18 +86,26 @@ async function fetchCSVAndCreateGraph() {
                 showarrow: true,
                 arrowhead: 2,
                 ax: 0,
-                ay: 40
+                ay: 40,
+                font: {
+                    size:16,
+                    width:1000
+                }
             },
             {
                 x: 1929,
                 y: seaLevelData[years.indexOf('1929')], // Adjust the y-coordinate of the callout as needed
                 xref: 'x',
                 yref: 'y',
-                text: "The Great Depression begins",
+                text: "Great Depression begins",
                 showarrow: true,
                 arrowhead: 2,
-                ax: 0,
-                ay: -40
+                ax: -50,
+                ay: -40,
+                font: {
+                    size:16, //Adjust callout font size
+                    width: 100
+                }
             },
             {
                 x: 1939,
@@ -95,7 +116,11 @@ async function fetchCSVAndCreateGraph() {
                 showarrow: true,
                 arrowhead: 2,
                 ax: 0,
-                ay: -40
+                ay: -40,
+                font: {
+                    size:16, //Adjust callout font size
+                    width: 100
+                }
             },
             {
                 x: 1945,
@@ -105,8 +130,11 @@ async function fetchCSVAndCreateGraph() {
                 text: "Atomic bombings of Hiroshima and Nagasaki",
                 showarrow: true,
                 arrowhead: 2,
-                ax: 0,
-                ay: 40
+                ax: 70,
+                ay: 40,
+                font: {
+                    size:16 //Adjust callout font size
+                }
             },
             {
                 x: 1955,
@@ -117,7 +145,10 @@ async function fetchCSVAndCreateGraph() {
                 showarrow: true,
                 arrowhead: 2,
                 ax: 0,
-                ay: -40
+                ay: -40,
+                font: {
+                    size:16 //Adjust callout font size
+                }
             },
             {
                 x: 1986,
@@ -128,7 +159,10 @@ async function fetchCSVAndCreateGraph() {
                 showarrow: true,
                 arrowhead: 2,
                 ax: 0,
-                ay: -40
+                ay: -40,
+                font: {
+                    size:16 //Adjust callout font size
+                }
             },
             {
                 x: 2003,
@@ -139,7 +173,10 @@ async function fetchCSVAndCreateGraph() {
                 showarrow: true,
                 arrowhead: 2,
                 ax: 0,
-                ay: -40
+                ay: -40,
+                font: {
+                    size:16 //Adjust callout font size
+                }
             },
         ]
     };
