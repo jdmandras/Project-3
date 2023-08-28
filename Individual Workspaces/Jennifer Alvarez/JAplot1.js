@@ -1,4 +1,4 @@
-//// last code using greek names example
+//// RELATIVE SEA LEVEL RISE PREDICTIONS table
 let searchResults = [{
   city: "New York",
   RSL2000: 0,

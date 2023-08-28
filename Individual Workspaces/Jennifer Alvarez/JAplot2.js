@@ -1,4 +1,4 @@
-//// last code using greek names example
+//// CUMMULATIVE SEA LEVEL RISE PREDICTIONS
 let searchResults = [{
   city: "New York",
   RSL2000: 0,
@@ -172,54 +172,50 @@ let searchResults = [{
 ];
 
 
-// For cummulative table
-// Create an array to store the cumulative values for each year
-const CummuRSL2000 = [];
-const CummuRSL2010 = [];
-const CummuRSL2020 = [];
-const CummuRSL2030 = [];
-const CummuRSL2040 = [];
-const CummuRSL2050 = [];
-const CummuRSL2060 = [];
-const CummuRSL2070 = [];
-const CummuRSL2080 = [];
-const CummuRSL2090 = [];
-const CummuRSL2100 = [];
-const CummuRSL2120 = [];
-const CummuRSL2150 = [];
-const CummuRSL2200 = [];
+// // For cummulative table
 
+// Iterate over each city's data
+for (let i = 0; i < searchResults.length; i++) {
+  const cityData = searchResults[i];
 
-// Loop through each city's data
-for (const result of searchResults) {
+  // Calculate cumulative RSL values
+  cityData.CummuRSL2010 = cityData.RSL2000 + cityData.RSL2010;
+  cityData.CummuRSL2020 = cityData.CummuRSL2010 + cityData.RSL2020;
+  cityData.CummuRSL2030 = cityData.CummuRSL2020 + cityData.RSL2030;
+  cityData.CummuRSL2040 = cityData.CummuRSL2030 + cityData.RSL2040;
+  cityData.CummuRSL2050 = cityData.CummuRSL2040 + cityData.RSL2050;
+  cityData.CummuRSL2060 = cityData.CummuRSL2050 + cityData.RSL2060;
+  cityData.CummuRSL2070 = cityData.CummuRSL2060 + cityData.RSL2070;
+  cityData.CummuRSL2080 = cityData.CummuRSL2070 + cityData.RSL2080;
+  cityData.CummuRSL2090 = cityData.CummuRSL2080 + cityData.RSL2090;
+  cityData.CummuRSL2100 = cityData.CummuRSL2090 + cityData.RSL2100;
+  cityData.CummuRSL2120 = cityData.CummuRSL2100 + cityData.RSL2120;
+  cityData.CummuRSL2150 = cityData.CummuRSL2120 + cityData.RSL2150;
+  cityData.CummuRSL2200 = cityData.CummuRSL2150 + cityData.RSL2200;
+}
 
-    CummuRSL2000.push(result.RSL2000);
-    CummuRSL2010.push(result.RSL2000 + result.RSL2010);
-    CummuRSL2020.push(result.RSL2000 + result.RSL2010 + result.RSL2020);
-    CummuRSL2030.push(result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030);
-    CummuRSL2040.push(result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040);
-    CummuRSL2050.push(result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050);
-    CummuRSL2060.push(result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060);
-    CummuRSL2070.push(result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070);
-    CummuRSL2080.push(result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070 + result.RSL2080);
-    CummuRSL2090.push(result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070 + result.RSL2080 + result.RSL2090);
-    CummuRSL2100.push(result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070 + result.RSL2080 + result.RSL2090 + result.RSL2100);
-    CummuRSL2120.push(result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070 + result.RSL2080 + result.RSL2090 + result.RSL2100 + result.RSL2120);
-    CummuRSL2150.push(result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070 + result.RSL2080 + result.RSL2090 + result.RSL2100 + result.RSL2120 + result.RSL2150);
-    CummuRSL2200.push(result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070 + result.RSL2080 + result.RSL2090 + result.RSL2100 + result.RSL2120 + result.RSL2150 + result.RSL2200);
-
+// Print the results
+for (let i = 0; i < searchResults.length; i++) {
+  const cityData = searchResults[i];
+  console.log(`${cityData.city}:`);
+  console.log("Cumulative RSL 2010:", cityData.CummuRSL2010);
+  console.log("Cumulative RSL 2020:", cityData.CummuRSL2020);
+  console.log("Cumulative RSL 2030:", cityData.CummuRSL2030);
+  console.log("Cumulative RSL 2040:", cityData.CummuRSL2040);
+  console.log("Cumulative RSL 2050:", cityData.CummuRSL2050);
+  console.log("Cumulative RSL 2060:", cityData.CummuRSL2060);
+  console.log("Cumulative RSL 2070:", cityData.CummuRSL2070);
+  console.log("Cumulative RSL 2080:", cityData.CummuRSL2080);
+  console.log("Cumulative RSL 2090:", cityData.CummuRSL2090);
+  console.log("Cumulative RSL 2100:", cityData.CummuRSL2100);
+  console.log("Cumulative RSL 2120:", cityData.CummuRSL2120);
+  console.log("Cumulative RSL 2150:", cityData.CummuRSL2150);
+  console.log("Cumulative RSL 2200:", cityData.CummuRSL2200);
+  console.log("\n");
 }
 
 
-
-
-
-// define a list for the decades
-let decades = [2030, 2040, 2050, 2060, 2070, 2080, 2090, 2100, 2120, 2150, 2200]
-// let cities = ['Yakutat', 'Kapingamarangi', 'Miami Beach', 'Tuxpan', 'Lautoka', 'North Sydney', 'Wilmington', 'Halifax', 'Seattle', 'New York']
-
-
-// // test your data with a console.log
+// //  test data data with a console.log
 // console.log(RSL2000Values);
 // console.log(RSL2010Values);
 // console.log(cities);
@@ -228,27 +224,43 @@ let decades = [2030, 2040, 2050, 2060, 2070, 2080, 2090, 2100, 2120, 2150, 2200]
 
 
 // Build table layout
+// Create an array to hold data for each city
+let cityDataArray = [];
 
-const traces = [
-  { x: decades, y: CummuRSL2030.reverse(), name: 'Yakutat' },
-  { x: decades, y: CummuRSL2040.reverse(), name: 'Kapingamarangi' },
-  { x: decades, y: CummuRSL2050.reverse(), name: 'Miami Beach' },
-  { x: decades, y: CummuRSL2060.reverse(), name: 'Tuxpan' },
-  { x: decades, y: CummuRSL2070.reverse(), name: 'Lautoka' },
-  { x: decades, y: CummuRSL2080.reverse(), name: 'North Sydney' },
-  { x: decades, y: CummuRSL2090.reverse(), name: 'Wilmington' },
-  { x: decades, y: CummuRSL2100.reverse(), name: 'Halifax' },
-  { x: decades, y: CummuRSL2120.reverse(), name: 'Seattle' },
-  { x: decades, y: CummuRSL2150.reverse(), name: 'New York' }
-];
+// Iterate over each city's data and format it for Plotly
+for (const cityData of searchResults) {
+  const years = Object.keys(cityData).filter(key => key.startsWith("RSL")).map(key => parseInt(key.slice(3)));
+  const rslValues = years.map(yearKey => cityData[`CummuRSL${yearKey}`]);
 
+  cityDataArray.push({
+    city: cityData.city,
+    years: years,
+    rslValues: rslValues,
+  });
+}
 
+// Create an array to hold trace data for each city
+let traces = [];
 
-// Define layout options
+// Create a line trace for each city
+for (const cityData of cityDataArray) {
+  traces.push({
+    x: cityData.years,
+    y: cityData.rslValues,
+    mode: 'lines',
+    name: cityData.city,
+  });
+}
+
+// Layout configuration
 const layout = {
-  title: 'Cummulative Sea Level Rise Predictions',
-  xaxis: { title: 'Year' },
-  yaxis: { title: 'RSL (cm)' }
+  title: 'Cummulative Rise in Sea Level over Time',
+  xaxis: {
+    title: 'Year',
+  },
+  yaxis: {
+    title: 'RSL in cm',
+  },
 };
 
 // Create the plot
