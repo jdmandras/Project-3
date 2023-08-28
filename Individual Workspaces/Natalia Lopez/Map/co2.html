@@ -1,33 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chart Visualization</title>
-
-  <!-- Load Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>CO2 Trend</title>
+  <link rel="stylesheet" href="co2style.css">
 </head>
-
 <body>
-<div class="container">
-  <h1>Chart Visualization</h1>
-
-  <div class="dropdown">
-    <label for="selYear">Select Year:</label>
-    <select id="selYear"></select>
+  <div class="container">
+    <h1>CO2 Trend</h1>
+    <select id="yearSelect"></select>
+    <canvas id="lineChart"></canvas>
   </div>
-</div>
-
-<div class="container">
-  <div id="charts">
-    <canvas id="barChart" width="400" height="400"></canvas>
-  </div>
-</div>
-
-<!-- Include the external JavaScript file -->
-<script src="co2_script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="co2_script.js"></script>
 </body>
-
 </html>
+

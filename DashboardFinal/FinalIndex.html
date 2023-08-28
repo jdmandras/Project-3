@@ -65,15 +65,10 @@
 
  <!-- CO2 displayed -->
  <div class="container">
-  <h2>CO2 levels</h2>
-  <div class="dropdown">
-    <label for="selYear">Select Year:</label>
-    <select id="selYear"></select>
-  </div>
-  <div id="co2_chart">
-    <div id="co2_bar"></div> <!-- Use a unique ID for the CO2 bar chart container -->
-  </div>
-  <!-- Include the external JavaScript file -->
+  <h2>CO2 Trend</h2>
+  <select id="yearSelect"></select>
+  <canvas id="lineChart"></canvas>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="co2_script.js"></script>
 </div>
 

@@ -1,67 +1,76 @@
-// Fetch CSV data
-fetch('co2_data.csv')
-  .then(response => response.text())
-  .then(data => processData(data));
+document.addEventListener("DOMContentLoaded", async function () {
+  const response = await fetch("co2_data.csv");
+  const data = await response.text();
+  const rows = data.split("\n").slice(1); // Skip header
 
-// Process the CSV data
-function processData(csvData) {
-  const lines = csvData.split('\n');
-  const header = lines[0].split(',');
-  const data = lines.slice(1).map(line => line.split(','));
+  const yearSelect = document.getElementById("yearSelect");
+  const ctx = document.getElementById("lineChart").getContext("2d");
+  let chart = null;
 
-  const years = [...new Set(data.map(item => item[0]))];
-  const months = Array.from({ length: 12 }, (_, i) => i + 1);
+  const years = new Set();
+  rows.forEach(row => {
+    const [year, month, day, cycle, trend] = row.split(",");
+    years.add(year);
+  });
 
-  const yearSelector = document.getElementById('selDataset');
   years.forEach(year => {
-    const option = document.createElement('option');
+    const option = document.createElement("option");
     option.value = year;
     option.textContent = year;
-    yearSelector.appendChild(option);
+    yearSelect.appendChild(option);
   });
 
-  yearSelector.addEventListener('change', () => {
-    const selectedYear = yearSelector.value;
-    const filteredData = data.filter(item => item[0] === selectedYear);
+  function updateChart(selectedYear) {
+    if (chart) {
+      chart.destroy();
+    }
 
-    const avgTrendsByMonth = months.map(month => {
-      const monthData = filteredData.filter(item => parseInt(item[1]) === month);
-      const trends = monthData.map(item => parseFloat(item[4]));
-      const average = trends.reduce((sum, trend) => sum + trend, 0) / trends.length;
-      return average;
+    const trendData = rows
+      .filter(row => row.startsWith(selectedYear))
+      .map(row => {
+        const [year, month, day, cycle, trend] = row.split(",");
+        return parseFloat(trend);
+      });
+
+    chart = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: Array.from({ length: trendData.length }, (_, i) => i + 1),
+        datasets: [{
+          label: `Trend Data for ${selectedYear}`,
+          data: trendData,
+          fill: false,
+          borderColor: "rgba(75, 192, 192, 1)",
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          x: {
+            display: true,
+            title: {
+              display: true,
+              text: "Data Point"
+            }
+          },
+          y: {
+            display: true,
+            title: {
+              display: true,
+              text: "Trend Data"
+            }
+          }
+        }
+      }
     });
+  }
 
-    createBarChart(months, avgTrendsByMonth);
+  yearSelect.addEventListener("change", function () {
+    const selectedYear = yearSelect.value;
+    updateChart(selectedYear);
   });
 
-  yearSelector.dispatchEvent(new Event('change'));
-
-  // Call the function to create the CO2 bar chart
-  createCO2BarChart(years, avgTrendsByMonth);
-}
-
-// Create the CO2 bar chart using Plotly
-function createCO2BarChart(years, avgTrendsByMonth) {
-  const co2BarChartContainer = document.getElementById('co2_bar'); // Use the correct ID here
-
-  const trace = {
-    x: years,
-    y: avgTrendsByMonth,
-    type: 'bar',
-    marker: {
-      color: 'pink'
-    }
-  };
-
-  const layout = {
-    title: 'Average CO2 Levels by Year',
-    xaxis: {
-      title: 'Year'
-    },
-    yaxis: {
-      title: 'Average CO2 Level'
-    }
-  };
-
-  Plotly.newPlot(co2BarChartContainer, [trace], layout);
-}
+  const defaultYear = yearSelect.options[yearSelect.selectedIndex].value;
+  updateChart(defaultYear);
+});
