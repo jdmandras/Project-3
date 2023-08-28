@@ -1,4 +1,4 @@
-var map = L.map('map').setView([data[0].Latitude, data[0].Longitude], 4);
+var map = L.map('map').setView([data[0].Latitude, data[0].Longitude], 1);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -29,7 +29,16 @@ data.forEach(function(item) {
         })
     }).bindPopup(
         "City: " + item.City +
+        "<br>Country: " + item.Country +
         "<br>AQI: " + item['AQI Value'] +
-        "<br>AQI Category: " + item['AQI Category']
+        "<br>AQI Category: " + item['AQI Category'] +
+        "<br>CO AQI Value: " + item['CO AQI Value'] +
+        "<br>AQI CO AQI Category: " + item['CO AQI Category'] +
+        "<br>OZone AQI Value: " + item['Ozone AQI Value'] +
+        "<br>Ozone AQI Category: " + item['Ozone AQI Category'] +
+        "<br>NO2 AQI Value: " + item['NO2 AQI Value'] +
+        "<br>NO2 AQI Category: " + item['NO2 AQI Category'] +
+        "<br>PM2.5 AQI Category: " + item['PM2.5 AQI Value'] +
+        "<br>PM2.5 AQI Category: " + item['PM2.5 AQI Category']
     ).addTo(map);
 });

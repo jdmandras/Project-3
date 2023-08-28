@@ -1,0 +1,27 @@
+body, html{
+    background: #f1f1f1;
+    padding-top: 50px;
+}
+
+.wrapper{
+    width:60%;
+    display:block;
+    overflow:hidden;
+    margin:0 auto;
+    padding: 60px 50px;
+    background:#fff;
+    border-radius:4px;
+}
+
+canvas{
+    background:#fff;
+}
+
+a{
+    margin-top:50px;
+    display: block;
+    text-decoration: none;
+    color: #80b6f4;
+    font-weight: bold;
+    text-align: center;
+}
