@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CO2 Trends Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>CO2 Trends Dashboard</h1>
+    <div>
+        <label for="yearSelect">Select Year:</label>
+        <select id="yearSelect" onchange="updateChart()">
+        </select>
+    </div>
+    <div id="chart"></div>
+
+    <script src="co2_script.js"></script>
+</body>
+</html>
+
