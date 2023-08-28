@@ -174,29 +174,41 @@ let searchResults = [{
 
 // For cummulative table
 // Create an array to store the cumulative values for each year
-// const cumulativeValues = [];
+const CummuRSL2000 = [];
+const CummuRSL2010 = [];
+const CummuRSL2020 = [];
+const CummuRSL2030 = [];
+const CummuRSL2040 = [];
+const CummuRSL2050 = [];
+const CummuRSL2060 = [];
+const CummuRSL2070 = [];
+const CummuRSL2080 = [];
+const CummuRSL2090 = [];
+const CummuRSL2100 = [];
+const CummuRSL2120 = [];
+const CummuRSL2150 = [];
+const CummuRSL2200 = [];
 
-// // Loop through each city's data
-// for (const result of searchResults) {
-//   const cumulativeData = {
-//     city: result.city,
-//     CummuRSL2000: result.RSL2000,
-//     CummuRSL2010: result.RSL2000 + result.RSL2010,
-//     CummuRSL2020: result.RSL2000 + result.RSL2010 + result.RSL2020,
-//     CummuRSL2030: result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030,
-//     CummuRSL2040: result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040,
-//     CummuRSL2050: result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050,
-//     CummuRSL2060: result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060,
-//     CummuRSL2070: result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070,
-//     CummuRSL2080: result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070 + result.RSL2080,
-//     CummuRSL2090: result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070 + result.RSL2080 + result.RSL2090,
-//     CummuRSL2100: result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070 + result.RSL2080 + result.RSL2090 + result.RSL2100,
-//     CummuRSL2120: result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070 + result.RSL2080 + result.RSL2090 + result.RSL2100 + result.RSL2120,
-//     CummuRSL2150: result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070 + result.RSL2080 + result.RSL2090 + result.RSL2100 + result.RSL2120 + result.RSL2150,
-//     CummuRSL2200: result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070 + result.RSL2080 + result.RSL2090 + result.RSL2100 + result.RSL2120 + result.RSL2150 + result.RSL2200
-//   };
 
-// }
+// Loop through each city's data
+for (const result of searchResults) {
+
+    CummuRSL2000.push(result.RSL2000);
+    CummuRSL2010.push(result.RSL2000 + result.RSL2010);
+    CummuRSL2020.push(result.RSL2000 + result.RSL2010 + result.RSL2020);
+    CummuRSL2030.push(result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030);
+    CummuRSL2040.push(result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040);
+    CummuRSL2050.push(result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050);
+    CummuRSL2060.push(result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060);
+    CummuRSL2070.push(result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070);
+    CummuRSL2080.push(result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070 + result.RSL2080);
+    CummuRSL2090.push(result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070 + result.RSL2080 + result.RSL2090);
+    CummuRSL2100.push(result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070 + result.RSL2080 + result.RSL2090 + result.RSL2100);
+    CummuRSL2120.push(result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070 + result.RSL2080 + result.RSL2090 + result.RSL2100 + result.RSL2120);
+    CummuRSL2150.push(result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070 + result.RSL2080 + result.RSL2090 + result.RSL2100 + result.RSL2120 + result.RSL2150);
+    CummuRSL2200.push(result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070 + result.RSL2080 + result.RSL2090 + result.RSL2100 + result.RSL2120 + result.RSL2150 + result.RSL2200);
+
+}
 
 
 
@@ -204,6 +216,7 @@ let searchResults = [{
 
 // define a list for the decades
 let decades = [2030, 2040, 2050, 2060, 2070, 2080, 2090, 2100, 2120, 2150, 2200]
+// let cities = ['Yakutat', 'Kapingamarangi', 'Miami Beach', 'Tuxpan', 'Lautoka', 'North Sydney', 'Wilmington', 'Halifax', 'Seattle', 'New York']
 
 
 // // test your data with a console.log
@@ -211,22 +224,22 @@ let decades = [2030, 2040, 2050, 2060, 2070, 2080, 2090, 2100, 2120, 2150, 2200]
 // console.log(RSL2010Values);
 // console.log(cities);
 // console.log(decades);
-console.log(CummuRSL2150)
+// console.log(CummuRSL2200)
 
 
 // Build table layout
 
 const traces = [
-  { x: decades, y: CummuRSL2030, name: 'New York' },
-  { x: decades, y: CummuRSL2040, name: 'Seattle' },
-  { x: decades, y: CummuRSL2050, name: 'Halifax' },
-  { x: decades, y: CummuRSL2060, name: 'Wilmington' },
-  { x: decades, y: CummuRSL2070, name: 'North Sydney' },
-  { x: decades, y: CummuRSL2080, name: 'Lautoka' },
-  { x: decades, y: CummuRSL2090, name: 'Tuxpan' },
-  { x: decades, y: CummuRSL2100, name: 'Miami Beach' },
-  { x: decades, y: CummuRSL2120, name: 'Kapingamarangi' },
-  { x: decades, y: CummuRSL2150, name: 'Yakutat' }
+  { x: decades, y: CummuRSL2030.reverse(), name: 'Yakutat' },
+  { x: decades, y: CummuRSL2040.reverse(), name: 'Kapingamarangi' },
+  { x: decades, y: CummuRSL2050.reverse(), name: 'Miami Beach' },
+  { x: decades, y: CummuRSL2060.reverse(), name: 'Tuxpan' },
+  { x: decades, y: CummuRSL2070.reverse(), name: 'Lautoka' },
+  { x: decades, y: CummuRSL2080.reverse(), name: 'North Sydney' },
+  { x: decades, y: CummuRSL2090.reverse(), name: 'Wilmington' },
+  { x: decades, y: CummuRSL2100.reverse(), name: 'Halifax' },
+  { x: decades, y: CummuRSL2120.reverse(), name: 'Seattle' },
+  { x: decades, y: CummuRSL2150.reverse(), name: 'New York' }
 ];
 
 

@@ -210,7 +210,9 @@ for (const result of searchResults) {
 
 
 // define a list for the decades
-let decades = [2000, 2010, 2020, 2030, 2040, 2050, 2060, 2070, 2080, 2090, 2100, 2120, 2150, 2200]
+let decades = [2030, 2040, 2050, 2060, 2070, 2080, 2090, 2100, 2120, 2150, 2200]
+let locations = ['Yakutat', 'Kapingamarangi', 'Miami Beach', 'Tuxpan', 'Lautoka', 'North Sydney', 'Wilmington', 'Halifax', 'Seattle', 'New York']
+
 
 
 // test your data with a console.log
@@ -223,16 +225,16 @@ console.log(decades);
 // Build table layout
 
 const traces = [
-  { x: decades, y: RSL2000Values, name: 'New York' },
-  { x: decades, y: RSL2010Values, name: 'Seattle' },
-  { x: decades, y: RSL2020Values, name: 'Halifax' },
-  { x: decades, y: RSL2030Values, name: 'Wilmington' },
-  { x: decades, y: RSL2040Values, name: 'North Sydney' },
-  { x: decades, y: RSL2050Values, name: 'Lautoka' },
-  { x: decades, y: RSL2060Values, name: 'Tuxpan' },
-  { x: decades, y: RSL2070Values, name: 'Miami Beach' },
-  { x: decades, y: RSL2080Values, name: 'Kapingamarangi' },
-  { x: decades, y: RSL2090Values, name: 'Yakutat' }
+  { x: decades, y: RSL2030Values.reverse(), name: 'Yakutat' },
+  { x: decades, y: RSL2040Values.reverse(), name: 'Kapingamarangi' },
+  { x: decades, y: RSL2050Values.reverse(), name: 'Miami Beach'},
+  { x: decades, y: RSL2060Values.reverse(), name: 'Tuxpan'},
+  { x: decades, y: RSL2070Values.reverse(), name: 'Lautoka' },
+  { x: decades, y: RSL2080Values.reverse(), name: 'North Sydney' },
+  { x: decades, y: RSL2090Values.reverse(), name: 'Wilmington' },
+  { x: decades, y: RSL2100Values.reverse(), name: 'Halifax' },
+  { x: decades, y: RSL2120Values.reverse(), name: 'Seattle' },
+  { x: decades, y: RSL2150Values.reverse(), name: 'New York' }
 ];
 
 
