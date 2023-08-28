@@ -51,14 +51,14 @@ document.addEventListener("DOMContentLoaded", async function () {
             display: true,
             title: {
               display: true,
-              text: "Data Point"
+              text: "Days"
             }
           },
           y: {
             display: true,
             title: {
               display: true,
-              text: "Trend Data"
+              text: "Trend"
             }
           }
         }
