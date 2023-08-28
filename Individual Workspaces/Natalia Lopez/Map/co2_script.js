@@ -1,73 +1,64 @@
-// Load CSV file and create bar chart
-d3.csv("co2_data.csv").then(function(data) {
-  const selYearDropdown = document.getElementById("selYear");
+// Fetch CSV data
+fetch('co2_data.csv')
+  .then(response => response.text())
+  .then(data => processData(data));
 
-  // Extract years from the data
-  const years = [...new Set(data.map(d => +d.year))];
+// Process the CSV data
+function processData(csvData) {
+  const lines = csvData.split('\n');
+  const header = lines[0].split(',');
+  const data = lines.slice(1).map(line => line.split(','));
 
-  // Populate the "Select Year" dropdown
+  const years = [...new Set(data.map(item => item[0]))];
+  const months = Array.from({ length: 12 }, (_, i) => i + 1);
+
+  const yearSelector = document.getElementById('selDataset');
   years.forEach(year => {
-    const option = document.createElement("option");
+    const option = document.createElement('option');
     option.value = year;
     option.textContent = year;
-    selYearDropdown.appendChild(option);
+    yearSelector.appendChild(option);
   });
 
-  // Event listener for the "Select Year" dropdown
-  selYearDropdown.addEventListener("change", function() {
-    const selectedYear = +this.value;
+  yearSelector.addEventListener('change', () => {
+    const selectedYear = yearSelector.value;
+    const filteredData = data.filter(item => item[0] === selectedYear);
 
-    // Filter data for the selected year
-    const filteredData = data.filter(d => +d.year === selectedYear);
-
-    // Process data to calculate average trend by month
-    const monthlyAvg = d3.rollups(
-      filteredData,
-      v => d3.mean(v, d => +d.trend),
-      d => +d.month
-    );
-
-    const months = monthlyAvg.map(d => d[0]);
-    const avgTrends = monthlyAvg.map(d => d[1]);
-
-    // Create Chart.js bar chart
-    const ctx = document.getElementById("barChart").getContext("2d");
-    const barChart = new Chart(ctx, {
-      type: "bar",
-      data: {
-        labels: months,
-        datasets: [{
-          label: `Average Trend for ${selectedYear}`,
-          data: avgTrends,
-          backgroundColor: "rgba(75, 192, 192, 0.2)",
-          borderColor: "rgba(75, 192, 192, 1)",
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true,
-            title: {
-              display: true,
-              text: "Average Trend"
-            }
-          },
-          x: {
-            title: {
-              display: true,
-              text: "Month"
-            }
-          }
-        },
-        plugins: {
-          title: {
-            display: true,
-            text: `Average Trend by Month for ${selectedYear}`
-          }
-        }
-      }
+    const avgTrendsByMonth = months.map(month => {
+      const monthData = filteredData.filter(item => parseInt(item[1]) === month);
+      const trends = monthData.map(item => parseFloat(item[4]));
+      const average = trends.reduce((sum, trend) => sum + trend, 0) / trends.length;
+      return average;
     });
-  });
-});
 
+    createBarChart(months, avgTrendsByMonth);
+  });
+
+  yearSelector.dispatchEvent(new Event('change'));
+}
+
+// Create the bar chart using Plotly
+function createBarChart(months, avgTrendsByMonth) {
+  const barChartContainer = document.getElementById('bar');
+
+  const trace = {
+    x: months.map(month => `Month ${month}`),
+    y: avgTrendsByMonth,
+    type: 'bar',
+    marker: {
+      color: 'pink'
+    }
+  };
+
+  const layout = {
+    title: 'Average Trend by Month',
+    xaxis: {
+      title: 'Month'
+    },
+    yaxis: {
+      title: 'Average Trend'
+    }
+  };
+
+  Plotly.newPlot(barChartContainer, [trace], layout);
+}

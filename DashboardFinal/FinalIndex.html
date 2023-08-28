@@ -53,6 +53,8 @@
 
 <script src="script_MG.js"></script>
 
+<!-- Map displayed -->
+
 <div class="container">
   <h2>Map Global Air Quality Data 2023</h2>
   <div id="map"></div>
@@ -60,6 +62,23 @@
   <script src="Glob_AP_Nat.js"></script>
   <script src="script_NL.js"></script>
 </div>
+
+<!-- CO2 displayed -->
+
+<div class="container">
+  <h2>CO2 levels</h2>
+
+  <div class="dropdown">
+    <label for="selYear">Select Year:</label>
+    <select id="selYear"></select>
+  </div>
+  <div id="charts">
+    <canvas id="barChart" width="400" height="400"></canvas>
+  </div>
+  <!-- Include the external JavaScript file -->
+<script src="co2_script.js"></script>
+</div>
+
 
 </body>
 
