@@ -35,14 +35,17 @@ function processData(csvData) {
   });
 
   yearSelector.dispatchEvent(new Event('change'));
+
+  // Call the function to create the CO2 bar chart
+  createCO2BarChart(years, avgTrendsByMonth);
 }
 
-// Create the bar chart using Plotly
-function createBarChart(months, avgTrendsByMonth) {
-  const barChartContainer = document.getElementById('bar');
+// Create the CO2 bar chart using Plotly
+function createCO2BarChart(years, avgTrendsByMonth) {
+  const co2BarChartContainer = document.getElementById('co2_bar'); // Use the correct ID here
 
   const trace = {
-    x: months.map(month => `Month ${month}`),
+    x: years,
     y: avgTrendsByMonth,
     type: 'bar',
     marker: {
@@ -51,14 +54,14 @@ function createBarChart(months, avgTrendsByMonth) {
   };
 
   const layout = {
-    title: 'Average Trend by Month',
+    title: 'Average CO2 Levels by Year',
     xaxis: {
-      title: 'Month'
+      title: 'Year'
     },
     yaxis: {
-      title: 'Average Trend'
+      title: 'Average CO2 Level'
     }
   };
 
-  Plotly.newPlot(barChartContainer, [trace], layout);
+  Plotly.newPlot(co2BarChartContainer, [trace], layout);
 }

@@ -63,22 +63,19 @@
   <script src="script_NL.js"></script>
 </div>
 
-<!-- CO2 displayed -->
-
-<div class="container">
+ <!-- CO2 displayed -->
+ <div class="container">
   <h2>CO2 levels</h2>
-
   <div class="dropdown">
     <label for="selYear">Select Year:</label>
     <select id="selYear"></select>
   </div>
-  <div id="charts">
-    <canvas id="barChart" width="400" height="400"></canvas>
+  <div id="co2_chart">
+    <div id="co2_bar"></div> <!-- Use a unique ID for the CO2 bar chart container -->
   </div>
   <!-- Include the external JavaScript file -->
-<script src="co2_script.js"></script>
+  <script src="co2_script.js"></script>
 </div>
-
 
 </body>
 
