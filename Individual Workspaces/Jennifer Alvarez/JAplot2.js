@@ -172,77 +172,71 @@ let searchResults = [{
 ];
 
 
-// Define empty lists for each year's values
-const cities = [];
-const RSL2000Values = [];
-const RSL2010Values = [];
-const RSL2020Values = [];
-const RSL2030Values = [];
-const RSL2040Values = [];
-const RSL2050Values = [];
-const RSL2060Values = [];
-const RSL2070Values = [];
-const RSL2080Values = [];
-const RSL2090Values = [];
-const RSL2100Values = [];
-const RSL2120Values = [];
-const RSL2150Values = [];
-const RSL2200Values = [];
+// For cummulative table
+// Create an array to store the cumulative values for each year
+// const cumulativeValues = [];
 
-// Loop through the searchResults data and populate the lists
-for (const result of searchResults) {
-  cities.push(result.city);
-  RSL2000Values.push(result.RSL2000);
-  RSL2010Values.push(result.RSL2010);
-  RSL2020Values.push(result.RSL2020);
-  RSL2030Values.push(result.RSL2030);
-  RSL2040Values.push(result.RSL2040);
-  RSL2050Values.push(result.RSL2050);
-  RSL2060Values.push(result.RSL2060);
-  RSL2070Values.push(result.RSL2070);
-  RSL2080Values.push(result.RSL2080);
-  RSL2090Values.push(result.RSL2090);
-  RSL2100Values.push(result.RSL2100);
-  RSL2120Values.push(result.RSL2120);
-  RSL2150Values.push(result.RSL2150);
-  RSL2200Values.push(result.RSL2200);
-}
+// // Loop through each city's data
+// for (const result of searchResults) {
+//   const cumulativeData = {
+//     city: result.city,
+//     CummuRSL2000: result.RSL2000,
+//     CummuRSL2010: result.RSL2000 + result.RSL2010,
+//     CummuRSL2020: result.RSL2000 + result.RSL2010 + result.RSL2020,
+//     CummuRSL2030: result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030,
+//     CummuRSL2040: result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040,
+//     CummuRSL2050: result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050,
+//     CummuRSL2060: result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060,
+//     CummuRSL2070: result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070,
+//     CummuRSL2080: result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070 + result.RSL2080,
+//     CummuRSL2090: result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070 + result.RSL2080 + result.RSL2090,
+//     CummuRSL2100: result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070 + result.RSL2080 + result.RSL2090 + result.RSL2100,
+//     CummuRSL2120: result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070 + result.RSL2080 + result.RSL2090 + result.RSL2100 + result.RSL2120,
+//     CummuRSL2150: result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070 + result.RSL2080 + result.RSL2090 + result.RSL2100 + result.RSL2120 + result.RSL2150,
+//     CummuRSL2200: result.RSL2000 + result.RSL2010 + result.RSL2020 + result.RSL2030 + result.RSL2040 + result.RSL2050 + result.RSL2060 + result.RSL2070 + result.RSL2080 + result.RSL2090 + result.RSL2100 + result.RSL2120 + result.RSL2150 + result.RSL2200
+//   };
+
+// }
+
+
+
 
 
 // define a list for the decades
-let decades = [2000, 2010, 2020, 2030, 2040, 2050, 2060, 2070, 2080, 2090, 2100, 2120, 2150, 2200]
+let decades = [2030, 2040, 2050, 2060, 2070, 2080, 2090, 2100, 2120, 2150, 2200]
 
 
-// test your data with a console.log
-console.log(RSL2000Values);
-console.log(RSL2010Values);
-console.log(cities);
-console.log(decades);
+// // test your data with a console.log
+// console.log(RSL2000Values);
+// console.log(RSL2010Values);
+// console.log(cities);
+// console.log(decades);
+console.log(CummuRSL2150)
 
 
 // Build table layout
 
 const traces = [
-  { x: decades, y: RSL2000Values, name: 'New York' },
-  { x: decades, y: RSL2010Values, name: 'Seattle' },
-  { x: decades, y: RSL2020Values, name: 'Halifax' },
-  { x: decades, y: RSL2030Values, name: 'Wilmington' },
-  { x: decades, y: RSL2040Values, name: 'North Sydney' },
-  { x: decades, y: RSL2050Values, name: 'Lautoka' },
-  { x: decades, y: RSL2060Values, name: 'Tuxpan' },
-  { x: decades, y: RSL2070Values, name: 'Miami Beach' },
-  { x: decades, y: RSL2080Values, name: 'Kapingamarangi' },
-  { x: decades, y: RSL2090Values, name: 'Yakutat' }
+  { x: decades, y: CummuRSL2030, name: 'New York' },
+  { x: decades, y: CummuRSL2040, name: 'Seattle' },
+  { x: decades, y: CummuRSL2050, name: 'Halifax' },
+  { x: decades, y: CummuRSL2060, name: 'Wilmington' },
+  { x: decades, y: CummuRSL2070, name: 'North Sydney' },
+  { x: decades, y: CummuRSL2080, name: 'Lautoka' },
+  { x: decades, y: CummuRSL2090, name: 'Tuxpan' },
+  { x: decades, y: CummuRSL2100, name: 'Miami Beach' },
+  { x: decades, y: CummuRSL2120, name: 'Kapingamarangi' },
+  { x: decades, y: CummuRSL2150, name: 'Yakutat' }
 ];
 
 
 
 // Define layout options
 const layout = {
-  title: 'Relative Sea Level Rise Predictions',
+  title: 'Cummulative Sea Level Rise Predictions',
   xaxis: { title: 'Year' },
   yaxis: { title: 'RSL (cm)' }
 };
 
 // Create the plot
-Plotly.newPlot('predicplot1', traces, layout);
+Plotly.newPlot('predicplot2', traces, layout);
