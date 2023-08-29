@@ -9,3 +9,6 @@ This data analytics project delves into the relationship between ocean temperatu
 
 ### Project Proposal Link: 
 https://docs.google.com/spreadsheets/d/1hUXEQ61Uu3qKjET-FD_D_D6WSRBqtRVKcPqp_mbfrdI/edit?usp=sharing
+
+### Presentation Link:
+https://docs.google.com/presentation/d/1D2MqRUYc5yLeXNnqMjrHE59mSfHJc7-FlYWqZKDodHs/edit?usp=sharing
