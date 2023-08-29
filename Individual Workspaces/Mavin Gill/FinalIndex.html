@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Algorithm Alchemists</title>
+
+<!-- Load Plotly.js -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  
+<!-- Load D3.js -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<!-- Link to your custom CSS file -->
+<link rel="stylesheet" type="text/css" href="styles_merged_MG_NL.css">
+
+<!-- Link to Interactive Map -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+</head>
+
+<body>
+<div class="container">
+  <h1>Team Algorithm Alchemists</h1>
+
+  <div class="dropdown">
+    <label for="datasetSelector">Select Dataset:</label>
+    <select id="datasetSelector"></select>
+  </div>
+
+  <div class="dropdown">
+    <label for="selDataset">Select Year:</label>
+    <select id="selDataset"></select>
+  </div>
+</div>
+
+<div class="container">
+  <div id="charts">
+    <div id="bar"></div>
+    <div id="bubble"></div>
+    <canvas id="chartjs-donut" width="400" height="400"></canvas>
+    <!-- Add other chart divs here -->
+  </div>
+
+  <div id="sample-metadata" class="metadata">
+    <!-- Demographic info will be displayed here -->
+  </div>
+</div>
+
+
+
+<!-- Map displayed -->
+
+<div class="container">
+  <h2>Map Global Air Quality Data 2023</h2>
+  <div id="map"></div>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="Glob_AP_Nat.js"></script>
+  <script src="script_MG.js"></script>
+  <script src="script_NL.js"></script>
+</div>
+
+ <!-- CO2 displayed -->
+ <div class="container">
+  <h2>CO2 Trend</h2>
+  <select id="yearSelect"></select>
+  <canvas id="lineChart"></canvas>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="co2script_NL.js"></script>
+</div>
+
+</body>
+
+</html>
